@@ -12,8 +12,8 @@ void insert_file(Word* word_ptr, string filename)
 		return;
 	}
 	File* iterator = word_ptr->file_ptr;
-	while(iterator->filename != filename && iterator->next())
-		iterator = iterator->next();
+	while(iterator->filename != filename && iterator->next)
+		iterator = iterator->next;
 	if(iterator->filename == filename)
 		iterator->count = iterator->count+1;
 	else
@@ -26,10 +26,21 @@ Word* insert_word(Word*& node, string search)
 		node = new Word(search);
 		return node;
 	}
-
 	else if (node->word == search)
 		return node;
-	else if(word < node->word)
+	else if(search < node->word)
+		return insert_word(node->left, search);
+	else
+		return insert_word(node->right, search);
+}
+
+Word* find_word(Word*& node, string search)
+{
+	if (!node)
+		return NULL;
+	else if (node->word == search)
+		return node;
+	else if(search < node->word)
 		return insert_word(node->left, search);
 	else
 		return insert_word(node->right, search);
@@ -37,10 +48,5 @@ Word* insert_word(Word*& node, string search)
 
 void print_all(Word* head)
 {
-	while(head){
-		cout << "\"" << head->word << "\"" << endl;
-		for(File* i = head->file_ptr; i; i = i->next())
-			cout << i->filename << ":" << i->count << endl;
-		head = head->next();
-	}
+	//stub
 }

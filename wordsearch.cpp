@@ -69,9 +69,7 @@ int main(int argc, char* argv[])
 		cin >> keyword;
 		if (keyword == "exit") //skip process if keyword == exit
 			return 0;
-		Word* iterW = head;
-		while (iterW != NULL && iterW->word != keyword) //search word
-			iterW = iterW->next();
+		Word* iterW = find_word(head, keyword);
 		if (iterW)
 		{
 			cout << "Keyword \"" + keyword + "\" found in: ";
@@ -79,7 +77,7 @@ int main(int argc, char* argv[])
 			while (iterF != NULL) //print files
 			{
 				cout << "[\"" << iterF->filename << "\", " << iterF->count << "] ";
-				iterF = iterF->next();
+				iterF = iterF->next;
 			}
 			cout << endl;
 		}

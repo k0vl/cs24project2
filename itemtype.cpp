@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 using namespace std;
-File::File( string filename, int count = 1, File* next = NULL )
+File::File( string filename, int count, File* next )
 {
 	this->filename = filename;
 	this->count = count;

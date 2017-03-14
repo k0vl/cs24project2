@@ -5,5 +5,6 @@ using namespace std;
 
 void insert_file(Word* word_ptr, string filename);
 Word* insert_word(Word*& head, string search);
+Word* find_word(Word*& node, string search);
 void print_all(Word* head);
 #endif

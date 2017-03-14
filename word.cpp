@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Word::Word(string word, File* file_ptr = NULL, Word* left = NULL, Word* right = NULL)
+Word::Word(string word, File* file_ptr, Word* left, Word* right)
 {
 	this->word = word;
 	this->file_ptr = file_ptr;

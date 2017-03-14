@@ -9,6 +9,7 @@ class Word{
 			Word* left = NULL, Word* right = NULL);
 		string word;
 		File* file_ptr;
-		Word* left, right;
+		Word* left;
+		Word* right;
 };
 #endif
