@@ -3,34 +3,10 @@
 using namespace std;
 
 
-Word::Word(string str, File* ptrF, Word* ptrW)
+Word::Word(string word, File* file_ptr, Word* left, Word* right)
 {
-	word = str;
-	file_ptr = ptrF;
-	next = ptrW;
-}
-
-void Word::setWord( string str )
-{
-	word = str;
-}
-void Word::setFilePtr( File* ptr )
-{
-	file_ptr = ptr;
-}
-void Word::setNext( Word* ptr )
-{
-	next = ptr;
-}
-string Word::getWord() const
-{
-	return word;
-}
-File* Word::getFilePtr() const
-{
-	return file_ptr;
-}
-Word* Word::getNext() const
-{
-	return next;
+	this->word = word;
+	this->file_ptr = file_ptr;
+	this->left = left;
+	this->right = right;
 }

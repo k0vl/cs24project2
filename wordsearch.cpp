@@ -84,9 +84,7 @@ void doSearch() {
 		cout << "\nEnter word (Or exit to quit the mode): ";
 		cin >> keyword;
 		if (keyword != "exit") {
-			Word* iterW = head;
-			while (iterW != NULL && iterW->getWord() != keyword) //search word
-				iterW = iterW->next;
+			Word* iterW = find_word(head, keyword);
 			if (iterW != NULL) {
 				cout << endl;
 				File* iterF = iterW->file_ptr;
