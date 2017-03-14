@@ -46,9 +46,9 @@ Word* find_word(Word*& node, string search)
 	else if (node->word == search)
 		return node;
 	else if(search < node->word)
-		return insert_word(node->left, search);
+		return find_word(node->left, search);
 	else
-		return insert_word(node->right, search);
+		return find_word(node->right, search);
 }
 
 void print_all(Word* head)
