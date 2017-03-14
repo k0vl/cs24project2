@@ -67,8 +67,7 @@ int main(int argc, char* argv[])
 		cout << "(2) Sort\n";
 		cout << "Input: ";
 		cin >> mode;
-		for ( char ch : mode )
-		{
+		for ( char ch : mode ){
 			ch = tolower(ch);
 		}
 		if ( mode == "1" ) {
@@ -78,49 +77,42 @@ int main(int argc, char* argv[])
 			doSort(head);
 		}
 	}
+	
 	cout << "\nThank you for using. Have a nice day." << endl;
 	return 0;
 }
 
 void doSearch(Word*& head) {
 	string keyword;
-	while(keyword != "exit") {
-		cout << "\nEnter word (Or exit to quit the mode): ";
-		cin >> keyword;
-		if (keyword != "exit") {
-			Word* iterW = find_word(head, keyword);
-			if (iterW != NULL) {
-				cout << endl;
-				File* iterF = iterW->file_ptr;
-				while (iterF != NULL) {
-					cout << iterF->filename << "         " << iterF->count << endl;
-					iterF = iterF->next;
-				}
-				cout << "WordTotal     " << iterW->wordTotal;
-				cout << "FileTotal     " << iterW->fileTotal;
-				cout << "Average       " << iterW->wordTotal/iterW->fileTotal;
-				cout << endl << endl;
-			}
+	cout << "\nEnter word (Or exit to quit the mode): ";
+	cin >> keyword;
+	Word* iterW = find_word(head, keyword);
+	if (iterW != NULL) {
+		cout << endl;
+		File* iterF = iterW->file_ptr;
+		while (iterF != NULL) {
+			cout << iterF->filename << "         " << iterF->count << endl;
+			iterF = iterF->next;
 		}
+		cout << "WordTotal     " << iterW->wordTotal;
+		cout << "FileTotal     " << iterW->fileTotal;
+		cout << "Average       " << iterW->wordTotal/iterW->fileTotal;
+		cout << endl << endl;
 	}
 }
 
 void doSort(Word*& head) {
 	string keyword;
-	while (keyword != "exit") {
-		cout << "\nHow many words? (Or exit to quit the mode): ";
-		cin >> keyword;
-		try {
-			if (keyword != "exit") {
-				cout << endl;
-				Word* iterW = head;
-				printNode(iterW, stoi(keyword));
-				cout << endl;
-			}
-		}
-		catch (int e) {
-			cout << "\nInvalid number" << endl;
-		}
+	cout << "\nHow many words? (Or exit to quit the mode): ";
+	cin >> keyword;
+	try {
+		cout << endl;
+		Word* iterW = head;
+		printNode(iterW, stoi(keyword));
+		cout << endl;
+	}
+	catch (int e) {
+		cout << "\nInvalid number" << endl;
 	}
 }
 
