@@ -111,6 +111,7 @@ void doSort(Word*& head) {
 				cout << endl;
 				Word* iterW = head;
 				printNode(iterW, stoi(keyword));
+				cout << endl;
 			}
 		}
 		catch (int e) {
