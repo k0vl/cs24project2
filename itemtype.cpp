@@ -3,34 +3,9 @@
 #include <cstdlib>
 
 using namespace std;
-File::File( string str, int num, File* ptr )
+File::File( string filename, int count = 1, File* next = NULL )
 {
-	filename = str;
-	count = num;
-	next = ptr;
-}
-
-void File::setFilename( string str )
-{
-	filename = str;
-}
-void File::setCount( int num )
-{
-	count = num;
-}
-void File::setNext( File* ptr )
-{
-	next = ptr;
-}
-string File::getFilename() const
-{
-	return filename;
-}
-int File::getCount() const
-{
-	return count;
-}
-File* File::getNext() const
-{
-	return next;
+	this->filename = filename;
+	this->count = count;
+	this->next = next;
 }

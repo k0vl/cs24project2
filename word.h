@@ -5,16 +5,10 @@ using namespace std;
 
 class Word{
 	public:
-		Word(string str, File* ptrF, Word* ptrW);
-		void setWord( string str );
-		void setFilePtr( File* ptr );
-		void setNext( Word* ptr );
-		string getWord() const;
-		File* getFilePtr() const;
-		Word* getNext() const;
-	private:
+		Word(string word, File* file_ptr = NULL, 
+			Word* left = NULL, Word* right = NULL);
 		string word;
 		File* file_ptr;
-		Word* next;
+		Word* left, right;
 };
 #endif
