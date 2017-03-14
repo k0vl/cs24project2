@@ -70,16 +70,16 @@ int main(int argc, char* argv[])
 		if (keyword == "exit") //skip process if keyword == exit
 			return 0;
 		Word* iterW = head;
-		while (iterW != NULL && iterW->getWord() != keyword) //search word
-			iterW = iterW->getNext();
+		while (iterW != NULL && iterW->word != keyword) //search word
+			iterW = iterW->next();
 		if (iterW)
 		{
 			cout << "Keyword \"" + keyword + "\" found in: ";
-			File* iterF = iterW->getFilePtr();
+			File* iterF = iterW->file_ptr;
 			while (iterF != NULL) //print files
 			{
-				cout << "[\"" << iterF->getFilename() << "\", " << iterF->getCount() << "] ";
-				iterF = iterF->getNext();
+				cout << "[\"" << iterF->filename << "\", " << iterF->count << "] ";
+				iterF = iterF->next();
 			}
 			cout << endl;
 		}

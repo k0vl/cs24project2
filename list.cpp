@@ -6,41 +6,41 @@
 using namespace std;
 void insert_file(Word* word_ptr, string filename)
 {
-	if( !(word_ptr->getFilePtr()) )
+	if( !(word_ptr->file_ptr) )
 	{
-		word_ptr->setFilePtr(new File(filename,1,NULL));
+		word_ptr->file_ptr = new File(filename,1,NULL);
 		return;
 	}
-	File* iterator = word_ptr->getFilePtr();
-	while(iterator->getFilename() != filename && iterator->getNext())
-		iterator = iterator->getNext();
-	if(iterator->getFilename() == filename)
-		iterator->setCount(iterator->getCount()+1);
+	File* iterator = word_ptr->file_ptr;
+	while(iterator->filename != filename && iterator->next())
+		iterator = iterator->next();
+	if(iterator->filename == filename)
+		iterator->count = iterator->count+1;
 	else
-		iterator->setNext (new File(filename,1,NULL));
+		iterator->next = new File(filename,1,NULL);
 }
 
-Word* insert_word(Word*& head, string search)
+Word* insert_word(Word*& node, string search)
 {
-	if (!head) {
-		head = new Word(search,NULL,NULL );
-		return head;
+	if (!node){
+		node = new Word(search);
+		return node;
 	}
-	Word* ptr = head;
-	while (ptr->getWord() != search && ptr->getNext())
-		ptr = ptr->getNext();
-	if (ptr->getWord() == search)
-		return ptr;
-	ptr->setNext(new Word(search,NULL,NULL));
-	return ptr->getNext();
+
+	else if (node->word == search)
+		return node;
+	else if(word < node->word)
+		return insert_word(node->left, search);
+	else
+		return insert_word(node->right, search);
 }
 
 void print_all(Word* head)
 {
 	while(head){
-		cout << "\"" << head->getWord() << "\"" << endl;
-		for(File* i = head->getFilePtr(); i; i = i->getNext())
-			cout << i->getFilename() << ":" << i->getCount() << endl;
-		head = head->getNext();
+		cout << "\"" << head->word << "\"" << endl;
+		for(File* i = head->file_ptr; i; i = i->next())
+			cout << i->filename << ":" << i->count << endl;
+		head = head->next();
 	}
 }
