@@ -59,7 +59,6 @@ int main(int argc, char* argv[])
 	}
 
 	string mode;
-	string keyword;
 	cout << "\nWelcome to The Dictionary\n";
 	while ( mode != "exit" ) {
 		cout << "Please enter a mode (Or exit to quit the program):\n";
@@ -69,17 +68,18 @@ int main(int argc, char* argv[])
 		cin >> mode;
 		mode = mode.tolower();
 		if ( mode == "1" ) {
-			doSearch();
+			doSearch(head);
 		}
 		else if ( mode == "2" ) {
-			doSort();
+			doSort(head);
 		}
 	}
 	cout << "\nThank you for using. Have a nice day." << endl;
 	return 0;
 }
 
-void doSearch() {
+void doSearch(Word*& head) {
+	string keyword;
 	while(keyword != "exit") {
 		cout << "\nEnter word (Or exit to quit the mode): ";
 		cin >> keyword;
@@ -101,8 +101,30 @@ void doSearch() {
 	}
 }
 
-void doSort() {
+void doSort(Word*& head) {
+	string keyword;
+	while (keyword != "exit") {
+		cout << "\nHow many words? (Or exit to quit the mode): ";
+		cin >> keyword;
+		try {
+			if (keyword != "exit") {
+				cout << endl;
+				Word* iterW = head;
+				printNode(iterW, stoi(keyword));
+			}
+		}
+		catch (int e) {
+			cout << "\nInvalid number" << endl;
+		}
+	}
+}
 
+void printNode(Word *& head, int count) {
+	if ( count > 0 && head != NULL ) {
+		printNode( head->left, count-- );
+		cout << head->word << " ";
+		printNode( head->right, count-- );
+	}
 }
 
 
