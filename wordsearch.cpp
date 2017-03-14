@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cctype>
 #include "word.h"
 #include "list.h"
 #include "wordsearch.h"
@@ -66,7 +67,10 @@ int main(int argc, char* argv[])
 		cout << "(2) Sort\n";
 		cout << "Input: ";
 		cin >> mode;
-		mode = mode.tolower();
+		for ( char ch : mode )
+		{
+			ch = tolower(ch);
+		}
 		if ( mode == "1" ) {
 			doSearch(head);
 		}
