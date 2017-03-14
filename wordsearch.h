@@ -7,6 +7,8 @@ using namespace std;
 
 int getdir (string dir, vector<string> &files);
 int main(int argc, char* argv[]);
+void doSearch();
+void doSort();
 #endif
 
 
