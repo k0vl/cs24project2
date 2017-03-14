@@ -11,5 +11,8 @@ class Word{
 		File* file_ptr;
 		Word* left;
 		Word* right;
+		
+		int wordTotal;
+		int fileTotal;
 };
 #endif

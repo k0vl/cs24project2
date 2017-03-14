@@ -6,9 +6,12 @@
 using namespace std;
 void insert_file(Word* word_ptr, string filename)
 {
+	word_ptr->wordTotal++;
+	
 	if( !(word_ptr->file_ptr) )
 	{
 		word_ptr->file_ptr = new File(filename,1,NULL);
+		word_ptr->fileTotal++;
 		return;
 	}
 	File* iterator = word_ptr->file_ptr;
@@ -16,8 +19,10 @@ void insert_file(Word* word_ptr, string filename)
 		iterator = iterator->next;
 	if(iterator->filename == filename)
 		iterator->count = iterator->count+1;
-	else
+	else{
 		iterator->next = new File(filename,1,NULL);
+		word_ptr->fileTotal++;
+	}
 }
 
 Word* insert_word(Word*& node, string search)

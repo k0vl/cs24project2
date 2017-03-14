@@ -9,4 +9,7 @@ Word::Word(string word, File* file_ptr, Word* left, Word* right)
 	this->file_ptr = file_ptr;
 	this->left = left;
 	this->right = right;
+	
+	wordTotal = 0;
+	fileTotal = 0;
 }
