@@ -87,41 +87,49 @@ void doSearch(Word*& head) {
 	cout << "\nEnter word (Or exit to quit the mode): ";
 	cin >> keyword;
 	Word* iterW = find_word(head, keyword);
+	
+	cout << endl;
 	if (iterW != NULL) {
-		cout << endl;
 		File* iterF = iterW->file_ptr;
 		while (iterF != NULL) {
 			cout << iterF->filename << "         " << iterF->count << endl;
 			iterF = iterF->next;
 		}
-		cout << "WordTotal     " << iterW->wordTotal;
-		cout << "FileTotal     " << iterW->fileTotal;
-		cout << "Average       " << iterW->wordTotal/iterW->fileTotal;
-		cout << endl << endl;
+		cout << "--------------" << endl;
+		cout << "WordTotal     " << iterW->wordTotal << endl;
+		cout << "FileTotal     " << iterW->fileTotal << endl;
+		cout << "Average       " << iterW->wordTotal/iterW->fileTotal << endl;
+	} else {
+		cout << "word not found." << endl;
 	}
+	cout << endl;
 }
 
-void doSort(Word*& head) {
-	string keyword;
+void doSort(Word* head) {
+	int count;
 	cout << "\nHow many words? (Or exit to quit the mode): ";
-	cin >> keyword;
 	try {
+		cin >> count;
 		cout << endl;
-		Word* iterW = head;
-		printNode(iterW, stoi(keyword));
-		cout << endl;
+		printNode(head, count);
+		cout << endl << endl;
 	}
 	catch (int e) {
 		cout << "\nInvalid number" << endl;
 	}
 }
 
-void printNode(Word *& head, int count) {
-	if ( count > 0 && head != NULL ) {
-		printNode( head->left, count-- );
+void printNode(Word * head, int& count) {
+	if (head == NULL)
+		return;
+	if (count > 0)
+		printNode( head->left, count );
+	if (count > 0){
 		cout << head->word << " ";
-		printNode( head->right, count-- );
+		count--;
 	}
+	if (count > 0)
+		printNode( head->right, count );
 }
 
 
